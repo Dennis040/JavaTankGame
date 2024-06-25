@@ -55,17 +55,14 @@ public class MyTank extends Item {
     }
 
     boolean interactWithItems(ArrayList<Item> items) {
-        Rectangle rect1 =
-                new Rectangle(x, y, size, size);
+        Rectangle rect1 = new Rectangle(x, y, size, size);
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             if (item.id == Images.TREE_ID) {
                 continue;
             }
 
-            Rectangle rect2 =
-                    new Rectangle(item.x, item.y,
-                            item.size, item.size);
+            Rectangle rect2 = new Rectangle(item.x, item.y,item.size, item.size);
             if (rect1.intersects(rect2) == true) {
                 return true;
             }
@@ -81,7 +78,9 @@ public class MyTank extends Item {
         int yB;
         switch (orientation) {
             case LEFT:
+                //Đặt tọa độ x của viên đạn ở phía bên trái xe tăng.
                 xB = x - sizeB;
+                //Đặt tọa độ y của viên đạn ở giữa chiều cao của xe tăng.
                 yB = y + (size - sizeB) / 2;
                 break;
             case RIGHT:
@@ -99,8 +98,7 @@ public class MyTank extends Item {
                 break;
         }
 
-        Bullet bullet = new Bullet(Images.BULLET_ID,
-                xB, yB, sizeB, orB);
+        Bullet bullet = new Bullet(Images.BULLET_ID, xB, yB, sizeB, orB);
         bullets.add(bullet);
     }
 
@@ -123,9 +121,7 @@ public class MyTank extends Item {
     public void interactBullet(ArrayList<Item> items) {
         for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
-            Rectangle rect1 =
-                    new Rectangle(bullet.x, bullet.y,
-                            bullet.size, bullet.size);
+            Rectangle rect1 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
             for (int j = 0; j < items.size(); j++) {
                 Item item = items.get(j);
                 if (item.id == Images.TREE_ID) {
@@ -135,9 +131,7 @@ public class MyTank extends Item {
                     continue;
                 }
 
-                Rectangle rect2 =
-                        new Rectangle(item.x, item.y,
-                                item.size, item.size);
+                Rectangle rect2 = new Rectangle(item.x, item.y, item.size, item.size);
                 if (rect1.intersects(rect2) == true) {
                     if (item.id == Images.ROCK_ID) {
                         bullets.remove(i);
