@@ -1,21 +1,21 @@
 package gui;
 
-import javax.sound.sampled.Clip;
-import javax.swing.*;
-
 import sound.Sound;
 
+import javax.sound.sampled.Clip;
+import javax.swing.*;
 import java.awt.*;
 
-public class PanelManager extends JPanel{
+public class PanelManager extends JPanel {
     public static final String PANEL_GAME = "Panel Game";
     public static final String PANEL_MENU = "Panel Menu";
     public static final String PANEL_HELP = "Panel Help";
+    CardLayout cardLayout;
     private PanelGame panelGame;
     private PanelMenu panelMenu;
     private PanelHelp panelHelp;
     private Clip clip;
-    CardLayout cardLayout;
+
     public PanelManager() {
         clip = Sound.getSound(getClass().getResource("/sound/enter_game.wav"));
         panelGame = new PanelGame();
@@ -23,13 +23,13 @@ public class PanelManager extends JPanel{
         panelHelp = new PanelHelp(this);
         cardLayout = new CardLayout();
         setLayout(cardLayout);
-        add(panelGame,PANEL_GAME);
-        add(panelMenu,PANEL_MENU);
-        add(panelHelp,PANEL_HELP);
+        add(panelGame, PANEL_GAME);
+        add(panelMenu, PANEL_MENU);
+        add(panelHelp, PANEL_HELP);
         clip.start();
         clip.loop(50);
-        cardLayout.show(this,PANEL_MENU);
-        addKeyListener( panelGame);
+        cardLayout.show(this, PANEL_MENU);
+        addKeyListener(panelGame);
         setFocusable(true);
     }
 

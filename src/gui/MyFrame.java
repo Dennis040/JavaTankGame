@@ -10,14 +10,14 @@ public class MyFrame extends JFrame {
     //PanelGame panelGame = new PanelGame();
 
 
-    public MyFrame(){
+    public MyFrame() {
         setTitle("GAME TANK");
-        setSize(W_FRAME,H_FRAME);
+        setSize(W_FRAME, H_FRAME);
         setLocationRelativeTo(null);
-        setResizable(false); 
+        setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-       // add(panelGame);
-       add(panelManager);
+        // add(panelGame);
+        add(panelManager);
 
 
         setVisible(true);

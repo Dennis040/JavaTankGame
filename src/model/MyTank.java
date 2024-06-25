@@ -26,28 +26,28 @@ public class MyTank extends Item {
             case LEFT:
                 x = x - 1;
                 boolean isIntesect = interactWithItems(items);
-                if ( isIntesect == true ) {
+                if (isIntesect == true) {
                     x = x + 1;
                 }
                 break;
             case RIGHT:
                 x = x + 1;
                 isIntesect = interactWithItems(items);
-                if ( isIntesect == true ) {
+                if (isIntesect == true) {
                     x = x - 1;
                 }
                 break;
             case UP:
                 y = y - 1;
                 isIntesect = interactWithItems(items);
-                if ( isIntesect == true ) {
+                if (isIntesect == true) {
                     y = y + 1;
                 }
                 break;
             case DOWN:
                 y = y + 1;
                 isIntesect = interactWithItems(items);
-                if ( isIntesect == true ) {
+                if (isIntesect == true) {
                     y = y - 1;
                 }
                 break;
@@ -57,16 +57,16 @@ public class MyTank extends Item {
     boolean interactWithItems(ArrayList<Item> items) {
         Rectangle rect1 =
                 new Rectangle(x, y, size, size);
-        for ( int i = 0; i < items.size(); i++ ) {
+        for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
-            if ( item.id == Images.TREE_ID ) {
+            if (item.id == Images.TREE_ID) {
                 continue;
             }
 
             Rectangle rect2 =
                     new Rectangle(item.x, item.y,
                             item.size, item.size);
-            if ( rect1.intersects(rect2) == true) {
+            if (rect1.intersects(rect2) == true) {
                 return true;
             }
 
@@ -81,20 +81,20 @@ public class MyTank extends Item {
         int yB;
         switch (orientation) {
             case LEFT:
-                xB = x -  sizeB;
-                yB = y + ( size - sizeB )/2;
+                xB = x - sizeB;
+                yB = y + (size - sizeB) / 2;
                 break;
             case RIGHT:
-                xB = x +  size;
-                yB = y + ( size - sizeB )/2;
+                xB = x + size;
+                yB = y + (size - sizeB) / 2;
                 break;
             case UP:
-                xB = x +  ( size - sizeB )/2;
+                xB = x + (size - sizeB) / 2;
                 yB = y - sizeB;
                 break;
 
             default:
-                xB = x +  ( size - sizeB )/2;
+                xB = x + (size - sizeB) / 2;
                 yB = y + size;
                 break;
         }
@@ -105,7 +105,7 @@ public class MyTank extends Item {
     }
 
     public void drawAllBullet(Graphics2D g2d) {
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             bullet.draw(g2d);
         }
@@ -113,7 +113,7 @@ public class MyTank extends Item {
     }
 
     public void moveAllBullet() {
-        for ( int i = 0; i< bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             bullet.move();
         }
@@ -121,30 +121,30 @@ public class MyTank extends Item {
     }
 
     public void interactBullet(ArrayList<Item> items) {
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect1 =
                     new Rectangle(bullet.x, bullet.y,
                             bullet.size, bullet.size);
-            for ( int j = 0 ; j < items.size(); j++ ){
+            for (int j = 0; j < items.size(); j++) {
                 Item item = items.get(j);
-                if ( item.id == Images.TREE_ID ) {
+                if (item.id == Images.TREE_ID) {
                     continue;
                 }
-                if ( item.id == Images.WATER_ID ) {
+                if (item.id == Images.WATER_ID) {
                     continue;
                 }
 
                 Rectangle rect2 =
                         new Rectangle(item.x, item.y,
                                 item.size, item.size);
-                if ( rect1.intersects(rect2) == true ) {
-                    if ( item.id == Images.ROCK_ID ) {
+                if (rect1.intersects(rect2) == true) {
+                    if (item.id == Images.ROCK_ID) {
                         bullets.remove(i);
                         return;
                     }
 
-                    if ( item.id == Images.BRICK_ID ) {
+                    if (item.id == Images.BRICK_ID) {
                         bullets.remove(i);
                         items.remove(j);
                         return;
@@ -157,10 +157,10 @@ public class MyTank extends Item {
 
     public boolean killEnemyTank(EnemyTank enemyTank) {
         Rectangle rect1 = new Rectangle(enemyTank.x, enemyTank.y, enemyTank.size, enemyTank.size);
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
-            if ( rect1.intersects(rect2)) {
+            if (rect1.intersects(rect2)) {
                 return true;
             }
         }
@@ -170,16 +170,15 @@ public class MyTank extends Item {
 
     public boolean killHome(Item home) {
         Rectangle rect1 = new Rectangle(home.x, home.y, home.size, home.size);
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
-            if ( rect1.intersects(rect2) ) {
+            if (rect1.intersects(rect2)) {
                 return true;
             }
         }
         return false;
     }
-
 
 
 }
