@@ -37,7 +37,6 @@ public class PanelMenu extends JPanel implements KeyListener {
         initListener();
         this.panelManager = panelManager;
 
-
     }
 
     private void initListener() {
@@ -81,27 +80,27 @@ public class PanelMenu extends JPanel implements KeyListener {
         jbStart = new JButton(imgStart[0]);
         jbStart.setRolloverIcon(imgStart[1]);
         jbStart.setSize(imgStart[0].getIconWidth(), imgStart[0].getIconHeight());
-        jbStart.setLocation(220, 250);
+        jbStart.setLocation(435, 510);
         add(jbStart);
 
 
         jbHelp = new JButton(imgHelp[0]);
         jbHelp.setRolloverIcon(imgHelp[1]);
         jbHelp.setSize(imgHelp[0].getIconWidth(), imgHelp[0].getIconHeight());
-        jbHelp.setLocation(220, 320);
+        jbHelp.setLocation(300, 520);
         add(jbHelp);
 
         jbExit = new JButton(imgExit[0]);
         jbExit.setRolloverIcon(imgExit[1]);
         jbExit.setSize(imgExit[0].getIconWidth(), imgExit[0].getIconHeight());
-        jbExit.setLocation(220, 390);
+        jbExit.setLocation(570, 520);
         add(jbExit);
     }
 
     protected void paintComponent(Graphics graphics) {
         super.paintChildren(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
-        Image img = new ImageIcon(getClass().getResource("/image/icon.jpg")).getImage();
+        Image img = new ImageIcon(getClass().getResource("/image/player/bg_tank.jpg")).getImage();
         graphics2D.drawImage(img, 0, 0, MyFrame.W_FRAME, MyFrame.H_FRAME, null);
     }
 

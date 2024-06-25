@@ -3,8 +3,8 @@ package gui;
 import javax.swing.*;
 
 public class MyFrame extends JFrame {
-    public static final int W_FRAME = 575;
-    public static final int H_FRAME = 600;
+    public static final int W_FRAME = 978;
+    public static final int H_FRAME = 689;
 
     PanelManager panelManager = new PanelManager();
     //PanelGame panelGame = new PanelGame();

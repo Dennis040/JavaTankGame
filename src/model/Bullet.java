@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Bullet extends Item {
-    public static Image IMG_BULLET = new ImageIcon(
-            Bullet.class.getResource("/image/bullet.png"))
-            .getImage();
+    public static Image IMG_BULLET = new ImageIcon(Bullet.class.getResource("/image/bullet.png")).getImage();
 
     int orientation;
 
@@ -18,16 +16,16 @@ public class Bullet extends Item {
     public void move() {
         switch (orientation) {
             case MyTank.LEFT:
-                x = x - 2;
+                x = x - 3;
                 break;
             case MyTank.RIGHT:
-                x = x + 2;
+                x = x + 3;
                 break;
             case MyTank.UP:
-                y = y - 2;
+                y = y - 3;
                 break;
             case MyTank.DOWN:
-                y = y + 2;
+                y = y + 3;
                 break;
             default:
                 break;

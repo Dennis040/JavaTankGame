@@ -23,7 +23,7 @@ public class ManagerItem {
 
         items = new ArrayList<>();
         int x = 200;
-        int y = 500;
+        int y = 580;
         int orientation = MyTank.UP;
         int id = Images.ID_TANKS[orientation];
         myTank = new MyTank(id, x, y, 35, orientation);
