@@ -1,18 +1,21 @@
 package gui;
 
+import sound.Sound;
+
 import javax.sound.sampled.Clip;
 import javax.swing.*;
-import sound.Sound;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelHelp extends JPanel implements ActionListener{
-    private JButton jbBack;
-
-    private PanelManager panelManager;
-
+public class PanelHelp extends JPanel implements ActionListener {
     public static final String BACK = "back";
+    public final Icon[] images = {
+            new ImageIcon(getClass().getResource("/image/back1.png")),
+            new ImageIcon(getClass().getResource("/image/back2.png")),
+    };
+    private JButton jbBack;
+    private PanelManager panelManager;
 
     public PanelHelp(PanelManager panelManager) {
         setLayout(null);
@@ -28,14 +31,12 @@ public class PanelHelp extends JPanel implements ActionListener{
         jbBack.setLocation(20, 20);
         add(jbBack);
     }
-    public final Icon[] images = {
-            new ImageIcon(getClass().getResource("/image/back1.png")),
-            new ImageIcon(getClass().getResource("/image/back2.png")),
-    };
+
     public void initListenner() {
         jbBack.addActionListener(this);
         jbBack.setActionCommand(BACK);
     }
+
     protected void paintComponent(Graphics graphics) {
         super.paintChildren(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
@@ -44,18 +45,18 @@ public class PanelHelp extends JPanel implements ActionListener{
     }
 
     @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            String run = actionEvent.getActionCommand();
-            ;
-            switch (run) {
-                case BACK: {
-                    Clip clip = Sound.getSound(getClass().getResource("/sound/shoot.wav"));
-                    clip.start();
-                    panelManager.showCard(PanelManager.PANEL_MENU);
-                    break;
-                }
-                default:
-                    break;
+    public void actionPerformed(ActionEvent actionEvent) {
+        String run = actionEvent.getActionCommand();
+        ;
+        switch (run) {
+            case BACK: {
+                Clip clip = Sound.getSound(getClass().getResource("/sound/shoot.wav"));
+                clip.start();
+                panelManager.showCard(PanelManager.PANEL_MENU);
+                break;
             }
+            default:
+                break;
         }
+    }
 }

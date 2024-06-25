@@ -12,9 +12,9 @@ public class Images {
     public static final int HOME_ID = 9;
     public static final int BULLET_ID = 11;
 
-    public static final int[] ID_TANKS = new int[] { 6, 7, 8, 10 };
+    public static final int[] ID_TANKS = new int[]{6, 7, 8, 10};
 
-    public static final int[] ID_ENEMY_TANKS = new int[] { 12, 13, 14, 15 };
+    public static final int[] ID_ENEMY_TANKS = new int[]{12, 13, 14, 15};
 
     public static final Image TREE = new ImageIcon(
             Images.class.getResource("/image/map/tree.png")).getImage();

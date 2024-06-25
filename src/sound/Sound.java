@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class Sound {
-    public static Clip getSound(URL url){
+    public static Clip getSound(URL url) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
             Clip clip = AudioSystem.getClip();

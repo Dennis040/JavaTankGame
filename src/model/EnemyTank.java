@@ -1,14 +1,13 @@
 package model;
 
-import javax.sound.sampled.Clip;
-
 import sound.Sound;
 
+import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class EnemyTank extends  Item {
+public class EnemyTank extends Item {
     int orientation;
     ArrayList<Bullet> bullets;
 
@@ -27,10 +26,10 @@ public class EnemyTank extends  Item {
                 if (isIntesect == true) {
                     x = x + 1;
                     changeOri(items);
-                }else {
+                } else {
                     Random rd = new Random();
                     int rdInt = rd.nextInt(10000);
-                    if ( rdInt > 9889 ) {
+                    if (rdInt > 9889) {
                         changeOri(items);
                     }
                 }
@@ -41,10 +40,10 @@ public class EnemyTank extends  Item {
                 if (isIntesect == true) {
                     x = x - 1;
                     changeOri(items);
-                }else {
+                } else {
                     Random rd = new Random();
                     int rdInt = rd.nextInt(10000);
-                    if ( rdInt > 9889 ) {
+                    if (rdInt > 9889) {
                         changeOri(items);
                     }
                 }
@@ -55,10 +54,10 @@ public class EnemyTank extends  Item {
                 if (isIntesect == true) {
                     y = y + 1;
                     changeOri(items);
-                }else {
+                } else {
                     Random rd = new Random();
                     int rdInt = rd.nextInt(10000);
-                    if ( rdInt > 9889 ) {
+                    if (rdInt > 9889) {
                         changeOri(items);
                     }
                 }
@@ -69,10 +68,10 @@ public class EnemyTank extends  Item {
                 if (isIntesect == true) {
                     y = y - 1;
                     changeOri(items);
-                }else {
+                } else {
                     Random rd = new Random();
                     int rdInt = rd.nextInt(10000);
-                    if ( rdInt > 9889 ) {
+                    if (rdInt > 9889) {
                         changeOri(items);
                     }
                 }
@@ -137,7 +136,7 @@ public class EnemyTank extends  Item {
     }
 
     public void drawAllBullet(Graphics2D g2d) {
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             bullet.draw(g2d);
         }
@@ -145,7 +144,7 @@ public class EnemyTank extends  Item {
     }
 
     public void moveAllBullet() {
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             bullet.move();
         }
@@ -153,30 +152,30 @@ public class EnemyTank extends  Item {
     }
 
     public void interactBullet(ArrayList<Item> items) {
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect1 =
                     new Rectangle(bullet.x, bullet.y,
                             bullet.size, bullet.size);
-            for ( int j = 0 ; j < items.size(); j++ ){
+            for (int j = 0; j < items.size(); j++) {
                 Item item = items.get(j);
-                if ( item.id == Images.TREE_ID ) {
+                if (item.id == Images.TREE_ID) {
                     continue;
                 }
-                if ( item.id == Images.WATER_ID ) {
+                if (item.id == Images.WATER_ID) {
                     continue;
                 }
 
                 Rectangle rect2 =
                         new Rectangle(item.x, item.y,
                                 item.size, item.size);
-                if ( rect1.intersects(rect2) == true ) {
-                    if ( item.id == Images.ROCK_ID ) {
+                if (rect1.intersects(rect2) == true) {
+                    if (item.id == Images.ROCK_ID) {
                         bullets.remove(i);
                         return;
                     }
 
-                    if ( item.id == Images.BRICK_ID ) {
+                    if (item.id == Images.BRICK_ID) {
                         bullets.remove(i);
                         items.remove(j);
                         return;
@@ -188,10 +187,10 @@ public class EnemyTank extends  Item {
 
     public boolean killMyTank(MyTank myTank) {
         Rectangle rect1 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
-            if (rect1.intersects(rect2) ) {
+            if (rect1.intersects(rect2)) {
                 Clip clip = Sound.getSound(getClass().getResource("/sound/explosion_tank.wav"));
                 clip.start();
                 return true;
@@ -203,10 +202,10 @@ public class EnemyTank extends  Item {
 
     public boolean killHome(Item home) {
         Rectangle rect1 = new Rectangle(home.x, home.y, home.size, home.size);
-        for ( int i = 0; i < bullets.size(); i++ ) {
+        for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
-            if (rect1.intersects(rect2) ) {
+            if (rect1.intersects(rect2)) {
                 return true;
             }
         }
