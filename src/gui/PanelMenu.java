@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 
 public class PanelMenu extends JPanel implements KeyListener {
     public static final String START = "start";
+    public static final String Player2 = "2player";
     public static final String HELP = "help";
     public static final String EXIT = "exit";
     public final Icon[] imgStart = {
@@ -25,10 +26,14 @@ public class PanelMenu extends JPanel implements KeyListener {
             new ImageIcon(getClass().getResource("/image/menu/exit.png")),
             new ImageIcon(getClass().getResource("/image/menu/Untitled-1.png")),
     };
+    public final Icon[] imgPlay2 = {
+            new ImageIcon(getClass().getResource("/image/menu/2player.png")),
+    };
     private PanelManager panelManager;
     private JButton jbStart;
     private JButton jbHelp;
     private JButton jbExit;
+    private JButton jb2Player;
 
 
     public PanelMenu(PanelManager panelManager) {
@@ -42,6 +47,8 @@ public class PanelMenu extends JPanel implements KeyListener {
     private void initListener() {
         jbStart.addActionListener(this::actionPerformed);
         jbStart.setActionCommand(START);
+        jb2Player.addActionListener(this::actionPerformed);
+        jb2Player.setActionCommand(Player2);
         jbHelp.addActionListener(this::actionPerformed);
         jbHelp.setActionCommand(HELP);
         jbExit.addActionListener(this::actionPerformed);
@@ -69,6 +76,12 @@ public class PanelMenu extends JPanel implements KeyListener {
                 clip.start();
                 System.exit(0);
             }
+            case Player2:{
+                Clip clip = Sound.getSound(getClass().getResource("/sound/shoot.wav"));
+                clip.start();
+                panelManager.showCard(PanelManager.PANEL_GAME2);
+                break;
+            }
         }
     }
 
@@ -83,6 +96,10 @@ public class PanelMenu extends JPanel implements KeyListener {
         jbStart.setLocation(435, 510);
         add(jbStart);
 
+        jb2Player = new JButton(imgPlay2[0]);
+        jb2Player.setSize(imgPlay2[0].getIconWidth(), imgPlay2[0].getIconHeight());
+        jb2Player.setLocation(0, 0);
+        add(jb2Player);
 
         jbHelp = new JButton(imgHelp[0]);
         jbHelp.setRolloverIcon(imgHelp[1]);

@@ -3,7 +3,7 @@ package model;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MyTank extends Item {
+public class MyTank2 extends Item {
     public static final int LEFT = 0;
     public static final int RIGHT = 1;
     public static final int UP = 2;
@@ -12,7 +12,7 @@ public class MyTank extends Item {
     int orientation;
     ArrayList<Bullet> bullets;
 
-    public MyTank(int id, int x, int y, int size, int orientation) {
+    public MyTank2(int id, int x, int y, int size, int orientation) {
         super(id, x, y, size);
         this.orientation = orientation;
         bullets = new ArrayList<Bullet>();
@@ -149,8 +149,8 @@ public class MyTank extends Item {
 
     }
 
-    public boolean killEnemyTank(EnemyTank enemyTank) {
-        Rectangle rect1 = new Rectangle(enemyTank.x, enemyTank.y, enemyTank.size, enemyTank.size);
+    public boolean killTank(MyTank myTank) {
+        Rectangle rect1 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
         for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);
             Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
@@ -172,18 +172,6 @@ public class MyTank extends Item {
             }
         }
         return false;
-    }
-    public boolean killTank(MyTank2 myTank2) {
-        Rectangle rect1 = new Rectangle(myTank2.x, myTank2.y, myTank2.size, myTank2.size);
-        for (int i = 0; i < bullets.size(); i++) {
-            Bullet bullet = bullets.get(i);
-            Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
-            if (rect1.intersects(rect2)) {
-                return true;
-            }
-        }
-        return false;
-
     }
 
 
