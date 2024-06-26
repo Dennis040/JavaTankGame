@@ -76,7 +76,7 @@ public class PanelMenu extends JPanel implements KeyListener {
                 clip.start();
                 System.exit(0);
             }
-            case Player2:{
+            case Player2: {
                 Clip clip = Sound.getSound(getClass().getResource("/sound/shoot.wav"));
                 clip.start();
                 panelManager.showCard(PanelManager.PANEL_GAME2);
@@ -93,24 +93,24 @@ public class PanelMenu extends JPanel implements KeyListener {
         jbStart = new JButton(imgStart[0]);
         jbStart.setRolloverIcon(imgStart[1]);
         jbStart.setSize(imgStart[0].getIconWidth(), imgStart[0].getIconHeight());
-        jbStart.setLocation(435, 510);
+        jbStart.setLocation(130, 520);
         add(jbStart);
 
         jb2Player = new JButton(imgPlay2[0]);
         jb2Player.setSize(imgPlay2[0].getIconWidth(), imgPlay2[0].getIconHeight());
-        jb2Player.setLocation(0, 0);
+        jb2Player.setLocation(330, 520);
         add(jb2Player);
 
         jbHelp = new JButton(imgHelp[0]);
         jbHelp.setRolloverIcon(imgHelp[1]);
         jbHelp.setSize(imgHelp[0].getIconWidth(), imgHelp[0].getIconHeight());
-        jbHelp.setLocation(300, 520);
+        jbHelp.setLocation(530, 520);
         add(jbHelp);
 
         jbExit = new JButton(imgExit[0]);
         jbExit.setRolloverIcon(imgExit[1]);
         jbExit.setSize(imgExit[0].getIconWidth(), imgExit[0].getIconHeight());
-        jbExit.setLocation(570, 520);
+        jbExit.setLocation(730, 520);
         add(jbExit);
     }
 
