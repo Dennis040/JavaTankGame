@@ -21,6 +21,7 @@ public class PanelGame2 extends JPanel implements KeyListener, Runnable {
     private boolean isRunning = true;
     private BitSet bitSet = new BitSet(256);
     private ManagerItem2 managerItem2;
+    private PanelManager panelManager;
 
     public PanelGame2() {
         setSize(MyFrame.W_FRAME, MyFrame.H_FRAME);
@@ -106,9 +107,16 @@ public class PanelGame2 extends JPanel implements KeyListener, Runnable {
             moveBulletOfTank();
             //fireOfMyTank();
             managerItem2.interactBulletOfMyTank();
-            if (managerItem2.killTank() || managerItem2.killTank2()) {
+            if (managerItem2.killTank()) {
                 bitSet.clear();
-                int check = JOptionPane.showConfirmDialog(PanelGame2.this, "Do you want continue", "Game Over", JOptionPane.YES_NO_OPTION);
+                int check = JOptionPane.showConfirmDialog(PanelGame2.this, "Do you want continue", "Player 2 Win", JOptionPane.YES_NO_OPTION);
+                if (check == JOptionPane.YES_OPTION) {
+                    managerItem2 = new ManagerItem2();
+                    managerItem2.readMap("map2player.txt");
+                } else System.exit(0);
+            }else  if (managerItem2.killTank2()) {
+                bitSet.clear();
+                int check = JOptionPane.showConfirmDialog(PanelGame2.this, "Do you want continue", "Player 1 Win", JOptionPane.YES_NO_OPTION);
                 if (check == JOptionPane.YES_OPTION) {
                     managerItem2 = new ManagerItem2();
                     managerItem2.readMap("map2player.txt");

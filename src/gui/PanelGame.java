@@ -105,20 +105,20 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
                     managerItem.readMap("map1.txt");
                 } else System.exit(0);
             }
-//            if (managerItem.checkWin()) {
-//                bitSet.clear();
-//                managerItem = new ManagerItem();
-//                managerItem.readMap("map2.txt");
-//                if (managerItem.checkWin()) {
-//                    int end = JOptionPane.showConfirmDialog(PanelGame.this, "You Win\nYou want to reply", "End Game", JOptionPane.YES_NO_OPTION);
-//                    if (end == JOptionPane.YES_NO_OPTION) {
-//                        bitSet.clear();
-//                        managerItem = new ManagerItem();
-//                        managerItem.readMap("map1.txt");
-//                    }
-//                    break;
-//                }
-//            }
+            if (managerItem.checkWin()) {
+                bitSet.clear();
+                managerItem = new ManagerItem();
+                managerItem.readMap("map2.txt");
+                if (managerItem.checkWin()) {
+                    int end = JOptionPane.showConfirmDialog(PanelGame.this, "You Win\nYou want to reply", "End Game", JOptionPane.YES_NO_OPTION);
+                    if (end == JOptionPane.YES_NO_OPTION) {
+                        bitSet.clear();
+                        managerItem = new ManagerItem();
+                        managerItem.readMap("map1.txt");
+                    }
+                    break;
+                }
+            }
             repaint();
         }
 

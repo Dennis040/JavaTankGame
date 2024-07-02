@@ -38,78 +38,78 @@ public class ManagerItem {
         int ori1 = MyTank.DOWN;
         int size1 = 36;
 
-//        EnemyTank enemyTank1 = new EnemyTank(Images.ID_ENEMY_TANKS[ori1],
-//                x1, y1, size1, ori1);
-//
-//        enemyTanks.add(enemyTank1);
-//
-//        int x2 = 8 * 20;
-//        int y2 = 20;
-//        int ori2 = MyTank.DOWN;
-//        int size2 = 36;
-//
-//        EnemyTank enemyTank2 = new EnemyTank(Images.ID_ENEMY_TANKS[ori2],
-//                x2, y2, size2, ori2);
-//        enemyTanks.add(enemyTank2);
-//
-//        int x3 = 20 * 20;
-//        int y3 = 20;
-//        int ori3 = MyTank.DOWN;
-//        int size3 = 36;
-//
-//        EnemyTank enemyTank3 = new EnemyTank(Images.ID_ENEMY_TANKS[ori3],
-//                x3, y3, size3, ori3);
-//
-//        enemyTanks.add(enemyTank3);
-//
-//        int x4 = 13 * 20;
-//        int y4 = 80;
-//        int ori4 = MyTank.DOWN;
-//        int size4 = 36;
-//
-//        EnemyTank enemyTank4 = new EnemyTank(Images.ID_ENEMY_TANKS[ori4],
-//                x4, y4, size4, ori4);
-//
-//        enemyTanks.add(enemyTank4);
-//
-//
-//        int x5 = 4 * 20;
-//        int y5 = 14 * 20;
-//        int ori5 = MyTank.RIGHT;
-//        int size5 = 36;
-//
-//        EnemyTank enemyTank5 = new EnemyTank(Images.ID_ENEMY_TANKS[ori5],
-//                x5, y5, size5, ori5);
-//
-//        enemyTanks.add(enemyTank5);
-//
-//
-//        int x6 = 21 * 20;
-//        int y6 = 16 * 20;
-//        int ori6 = MyTank.RIGHT;
-//        int size6 = 36;
-//
-//        EnemyTank enemyTank6 = new EnemyTank(Images.ID_ENEMY_TANKS[ori6],
-//                x6, y6, size6, ori6);
-//        enemyTanks.add(enemyTank6);
-//
-//        int x7 = 2 * 20;
-//        int y7 = 8 * 20;
-//        int ori7 = MyTank.RIGHT;
-//        int size7 = 36;
-//
-//        EnemyTank enemyTank7 = new EnemyTank(Images.ID_ENEMY_TANKS[ori7],
-//                x7, y7, size7, ori7);
-//        enemyTanks.add(enemyTank7);
-//
-//        int x8 = 5 * 20;
-//        int y8 = 17 * 20;
-//        int ori8 = MyTank.RIGHT;
-//        int size8 = 36;
-//
-//        EnemyTank enemyTank8 = new EnemyTank(Images.ID_ENEMY_TANKS[ori8],
-//                x8, y8, size8, ori8);
-//        enemyTanks.add(enemyTank8);
+        EnemyTank enemyTank1 = new EnemyTank(Images.ID_ENEMY_TANKS[ori1],
+                x1, y1, size1, ori1);
+
+        enemyTanks.add(enemyTank1);
+
+        int x2 = 8 * 20;
+        int y2 = 20;
+        int ori2 = MyTank.DOWN;
+        int size2 = 36;
+
+        EnemyTank enemyTank2 = new EnemyTank(Images.ID_ENEMY_TANKS[ori2],
+                x2, y2, size2, ori2);
+        enemyTanks.add(enemyTank2);
+
+        int x3 = 20 * 20;
+        int y3 = 20;
+        int ori3 = MyTank.DOWN;
+        int size3 = 36;
+
+        EnemyTank enemyTank3 = new EnemyTank(Images.ID_ENEMY_TANKS[ori3],
+                x3, y3, size3, ori3);
+
+        enemyTanks.add(enemyTank3);
+
+        int x4 = 13 * 20;
+        int y4 = 80;
+        int ori4 = MyTank.DOWN;
+        int size4 = 36;
+
+        EnemyTank enemyTank4 = new EnemyTank(Images.ID_ENEMY_TANKS[ori4],
+                x4, y4, size4, ori4);
+
+        enemyTanks.add(enemyTank4);
+
+
+        int x5 = 4 * 20;
+        int y5 = 14 * 20;
+        int ori5 = MyTank.RIGHT;
+        int size5 = 36;
+
+        EnemyTank enemyTank5 = new EnemyTank(Images.ID_ENEMY_TANKS[ori5],
+                x5, y5, size5, ori5);
+
+        enemyTanks.add(enemyTank5);
+
+
+        int x6 = 21 * 20;
+        int y6 = 16 * 20;
+        int ori6 = MyTank.RIGHT;
+        int size6 = 36;
+
+        EnemyTank enemyTank6 = new EnemyTank(Images.ID_ENEMY_TANKS[ori6],
+                x6, y6, size6, ori6);
+        enemyTanks.add(enemyTank6);
+
+        int x7 = 2 * 20;
+        int y7 = 8 * 20;
+        int ori7 = MyTank.RIGHT;
+        int size7 = 36;
+
+        EnemyTank enemyTank7 = new EnemyTank(Images.ID_ENEMY_TANKS[ori7],
+                x7, y7, size7, ori7);
+        enemyTanks.add(enemyTank7);
+
+        int x8 = 5 * 20;
+        int y8 = 17 * 20;
+        int ori8 = MyTank.RIGHT;
+        int size8 = 36;
+
+        EnemyTank enemyTank8 = new EnemyTank(Images.ID_ENEMY_TANKS[ori8],
+                x8, y8, size8, ori8);
+        enemyTanks.add(enemyTank8);
 
 
     }
