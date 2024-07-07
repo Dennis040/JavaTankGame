@@ -1,5 +1,6 @@
 package gui;
 
+import online.OnlineGame;
 import sound.Sound;
 
 import javax.sound.sampled.Clip;
@@ -36,6 +37,7 @@ public class PanelManager extends JPanel {
         addKeyListener(panelGame);
         addKeyListener(panelGame2);
         setFocusable(true);
+        clip.stop();
     }
 
     public void showCard(String name) {

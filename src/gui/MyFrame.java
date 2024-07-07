@@ -9,7 +9,6 @@ public class MyFrame extends JFrame {
     PanelManager panelManager = new PanelManager();
     //PanelGame panelGame = new PanelGame();
 
-
     public MyFrame() {
         setTitle("GAME TANK");
         setSize(W_FRAME, H_FRAME);
@@ -18,7 +17,6 @@ public class MyFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // add(panelGame);
         add(panelManager);
-
 
         setVisible(true);
     }

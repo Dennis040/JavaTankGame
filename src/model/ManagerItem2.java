@@ -78,7 +78,11 @@ public class ManagerItem2 {
 
     public void drawMyTank(Graphics2D g2d) {
         myTank.draw(g2d);
+
+    }
+    public void drawMyTank2(Graphics2D g2d) {
         myTank2.draw(g2d);
+
     }
 
     public void moveMyTank(int orientation) {
