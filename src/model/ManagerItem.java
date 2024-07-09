@@ -20,16 +20,26 @@ public class ManagerItem {
     private MyTank myTank;
 
     public ManagerItem() {
-
         items = new ArrayList<>();
         int x = 200;
         int y = 580;
         int orientation = MyTank.UP;
         int id = Images.ID_TANKS[orientation];
+        int maxHealth = 100;  // Max health cho MyTank
         myTank = new MyTank(id, x, y, 35, orientation);
         enemyTanks = new ArrayList<EnemyTank>();
         createEnemy();
+        createHeart();
 
+    }
+
+    private void createHeart() {
+        HeartItem heart1 = new HeartItem(Images.HEART_ID, 100, 100, 20);
+        items.add(heart1);
+        HeartItem heart2 = new HeartItem(Images.HEART_ID, 720, 70, 20);
+        items.add(heart2);
+        HeartItem heart3 = new HeartItem(Images.HEART_ID, 840, 540, 20);
+        items.add(heart3);
     }
 
     void createEnemy() {
@@ -83,7 +93,6 @@ public class ManagerItem {
 
         enemyTanks.add(enemyTank5);
 
-
         int x6 = 21 * 20;
         int y6 = 16 * 20;
         int ori6 = MyTank.RIGHT;
@@ -111,7 +120,6 @@ public class ManagerItem {
                 x8, y8, size8, ori8);
         enemyTanks.add(enemyTank8);
 
-
     }
 
     public void drawEnemyAllTank(Graphics2D g2d) {
@@ -122,7 +130,6 @@ public class ManagerItem {
     }
 
     public void readMap(String map) {
-
         File file = new File("src/map/" + map);
         try {
             RandomAccessFile rd = new RandomAccessFile(file, "rw");
@@ -136,14 +143,16 @@ public class ManagerItem {
                     }
                     int x = i * 20;
                     int y = index * 20;
+
                     Item item;
                     if (id == 9) {
                         item = new Item(id, x, y, 40);
                         home = item;
+                    } else if (id == 17) { // Assuming a specific ID for hearts
+                        item = new HeartItem(id, x, y, 20);
                     } else {
                         item = new Item(id, x, y, 20);
                     }
-
                     items.add(item);
 
                 }
@@ -153,8 +162,6 @@ public class ManagerItem {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void drawAll(Graphics2D g2d) {
@@ -182,17 +189,14 @@ public class ManagerItem {
 
     public void drawBulletOfMyTank(Graphics2D g2d) {
         myTank.drawAllBullet(g2d);
-
     }
 
     public void moveBulletOfMyTank() {
         myTank.moveAllBullet();
-
     }
 
     public void interactBulletOfMyTank() {
         myTank.interactBullet(items);
-
     }
 
     public void interactBulletOfAllEnemyTank() {
@@ -212,8 +216,6 @@ public class ManagerItem {
             EnemyTank enemyTank = enemyTanks.get(i);
             enemyTank.move(items);
         }
-
-
     }
 
     public void fireEnemyTank() {
@@ -272,7 +274,6 @@ public class ManagerItem {
             clip.start();
             return true;
         }
-
         return false;
     }
 
@@ -297,7 +298,6 @@ public class ManagerItem {
                 return true;
             }
         }
-
         return false;
     }
 }

@@ -11,11 +11,69 @@ public class MyTank extends Item {
 
     int orientation;
     ArrayList<Bullet> bullets;
+    private int health;
+    private int maxHealth;
 
     public MyTank(int id, int x, int y, int size, int orientation) {
         super(id, x, y, size);
         this.orientation = orientation;
         bullets = new ArrayList<Bullet>();
+        health = 3;
+    }
+
+    public MyTank(int id, int x, int y, int size, int orientation, int maxHealth) {
+        super(id, x, y, size);
+        this.orientation = orientation;
+        bullets = new ArrayList<Bullet>();
+        this.maxHealth = maxHealth;
+        health = 3;
+    }
+
+    public void increaseHealth() {
+        health += 1;
+        if (health > maxHealth)
+            health = maxHealth;
+        System.out.println("Health increased to: " + health);
+    }
+
+    public void increaseHealth(int amount) {
+        health += amount;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
+    }
+
+    public void decreaseHealth(int amount) {
+        health -= amount;
+        if (health < 0) {
+            health = 0;
+        }
+    }
+
+    public void draw(Graphics2D g2d) {
+        super.draw(g2d);  // Gọi phương thức draw của lớp cha để vẽ hình ảnh của xe tăng
+
+        // Vẽ thanh máu
+        int barWidth = size;  // Chiều rộng của thanh máu
+        int barHeight = 5;    // Chiều cao của thanh máu
+
+        // Chiều rộng thanh máu dựa vào tỷ lệ sức khỏe
+        int healthBarWidth = (int) ((health / (double) maxHealth) * barWidth);
+        if (healthBarWidth < 0) {
+            healthBarWidth = 0;
+        }  // Đảm bảo thanh máu không có chiều rộng âm
+
+        // Vẽ nền của thanh máu
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(x, y + size + 2, barWidth, barHeight);  // Vẽ nền thanh máu
+
+        // Vẽ thanh máu
+//        g2d.setColor(Color.RED);
+//        g2d.fillRect(x, y + size + 2, healthBarWidth, barHeight);
+
+        // Vẽ viền của thanh máu
+        g2d.setColor(Color.WHITE);
+        g2d.drawRect(x, y + size + 2, barWidth, barHeight);  // Vẽ viền thanh máu
     }
 
     public void move(int orientation, ArrayList<Item> items) {
@@ -63,8 +121,16 @@ public class MyTank extends Item {
             }
 
             Rectangle rect2 = new Rectangle(item.x, item.y, item.size, item.size);
-            if (rect1.intersects(rect2) == true) {
-                return true;
+            if (rect1.intersects(rect2)) {
+                if (item instanceof HeartItem) {
+                    ((HeartItem) item).interact(this);
+
+                    items.remove(i);
+                    i--;
+                    continue; // Tiếp tục để không ảnh hưởng đến di chuyển của xe tăng
+                } else {
+                    return true; // Chỉ trả về true nếu va chạm với vật cản
+                }
             }
 
         }
@@ -107,7 +173,6 @@ public class MyTank extends Item {
             Bullet bullet = bullets.get(i);
             bullet.draw(g2d);
         }
-
     }
 
     public void moveAllBullet() {
@@ -184,8 +249,5 @@ public class MyTank extends Item {
             }
         }
         return false;
-
     }
-
-
 }

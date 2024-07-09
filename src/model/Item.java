@@ -19,4 +19,22 @@ public class Item {
     public void draw(Graphics2D g2d) {
         g2d.drawImage(img, x, y, size, size, null);
     }
+
+    public void drawHeart(Graphics2D g2d) {
+        g2d.drawImage(img, x, y, null);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, img.getWidth(null), img.getHeight(null));
+    }
 }
+
+

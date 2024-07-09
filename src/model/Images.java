@@ -11,6 +11,7 @@ public class Images {
     public static final int WATER_ID = 2;
     public static final int HOME_ID = 9;
     public static final int BULLET_ID = 11;
+    public static final int HEART_ID = 17;
 
     public static final int[] ID_TANKS = new int[]{6, 7, 8, 10};
 
@@ -64,8 +65,13 @@ public class Images {
     public static final Image BULLET = new ImageIcon(
             Images.class.getResource("/image/bullet.png")).getImage();
 
+    public static final Image HEART = new ImageIcon(
+            Images.class.getResource("/image/heart.png")).getImage();
+
     public static Image getImage(int id) {
         switch (id) {
+            case HEART_ID:
+                return HEART;
             case TREE_ID:
                 return TREE;
             case ROCK_ID:

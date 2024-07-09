@@ -30,7 +30,6 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
         managerItem.readMap("map1.txt");
         addKeyListener(this);
 
-
         setRequestFocusEnabled(true);
         setFocusable(true);
 
@@ -82,10 +81,8 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
                 managerItem.moveMyTank(MyTank.UP);
             } else if (bitSet.get(KeyEvent.VK_DOWN)) {
                 managerItem.moveMyTank(MyTank.DOWN);
-
             }
             if (bitSet.get(KeyEvent.VK_SPACE)) {
-
                 managerItem.fireBullet();
             }
             //moveMyTank();
