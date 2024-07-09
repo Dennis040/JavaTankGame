@@ -125,7 +125,7 @@ public class ManagerItem {
 
         File file = new File("src/map/" + map);
         try {
-            RandomAccessFile rd =  new RandomAccessFile(file, "rw");
+            RandomAccessFile rd = new RandomAccessFile(file, "rw");
             String content = rd.readLine();
             int index = 0;
             while (content != null) {

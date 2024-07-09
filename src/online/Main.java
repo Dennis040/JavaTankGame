@@ -1,7 +1,6 @@
 package online;
 
 import gui.MyFrame;
-import gui.PanelGame2;
 
 import javax.swing.*;
 

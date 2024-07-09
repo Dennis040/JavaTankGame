@@ -1,6 +1,5 @@
 package gui;
 
-import online.OnlineGame;
 import sound.Sound;
 
 import javax.sound.sampled.Clip;
@@ -16,13 +15,13 @@ public class PanelManager extends JPanel {
     private PanelGame panelGame;
     private PanelMenu panelMenu;
     private PanelHelp panelHelp;
-    private PanelGame2 panelGame2;
+    private PanelGame2Player panelGame2Player;
     private Clip clip;
 
     public PanelManager() {
         clip = Sound.getSound(getClass().getResource("/sound/enter_game.wav"));
         panelGame = new PanelGame();
-        panelGame2 = new PanelGame2();
+        panelGame2Player = new PanelGame2Player();
         panelMenu = new PanelMenu(this);
         panelHelp = new PanelHelp(this);
         cardLayout = new CardLayout();
@@ -30,12 +29,12 @@ public class PanelManager extends JPanel {
         add(panelGame, PANEL_GAME);
         add(panelMenu, PANEL_MENU);
         add(panelHelp, PANEL_HELP);
-        add(panelGame2, PANEL_GAME2);
+        add(panelGame2Player, PANEL_GAME2);
         clip.start();
         clip.loop(50);
         cardLayout.show(this, PANEL_MENU);
         addKeyListener(panelGame);
-        addKeyListener(panelGame2);
+        addKeyListener(panelGame2Player);
         setFocusable(true);
         clip.stop();
     }
@@ -52,10 +51,10 @@ public class PanelManager extends JPanel {
         } else if (name == PANEL_HELP) {
             cardLayout.show(this, name);
             clip.stop();
-        }else if (name == PANEL_GAME2) {
+        } else if (name == PANEL_GAME2) {
             cardLayout.show(this, name);
             clip.stop();
-            panelGame2 = new PanelGame2();
+            panelGame2Player = new PanelGame2Player();
         }
     }
 }

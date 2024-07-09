@@ -1,13 +1,20 @@
 package online;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class GameServer {
     private static final int PORT = 12345;
-    private static Set<Socket> clientSockets = Collections.synchronizedSet(new HashSet<>());
     private static final int MAX_CLIENTS = 2;
+    private static Set<Socket> clientSockets = Collections.synchronizedSet(new HashSet<>());
 
     public static void main(String[] args) {
         //tạo server socket va lang nghe
@@ -37,7 +44,7 @@ public class GameServer {
                 }
                 System.out.println(clientSockets.size());
             }
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

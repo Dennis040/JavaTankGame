@@ -62,7 +62,7 @@ public class MyTank2 extends Item {
                 continue;
             }
 
-            Rectangle rect2 = new Rectangle(item.x, item.y,item.size, item.size);
+            Rectangle rect2 = new Rectangle(item.x, item.y, item.size, item.size);
             if (rect1.intersects(rect2) == true) {
                 return true;
             }

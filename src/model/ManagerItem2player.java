@@ -1,8 +1,5 @@
 package model;
 
-import sound.Sound;
-
-import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -10,14 +7,14 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 
-public class ManagerItem2 {
+public class ManagerItem2player {
     long currentTimeFireMyTank = 0;
     Item home;
     private ArrayList<Item> items;
     private MyTank myTank;
     private MyTank2 myTank2;
 
-    public ManagerItem2() {
+    public ManagerItem2player() {
 
         items = new ArrayList<>();
         int x = 200;
@@ -31,13 +28,11 @@ public class ManagerItem2 {
     }
 
 
-
-
     public void readMap(String map) {
 
         File file = new File("src/map/" + map);
         try {
-            RandomAccessFile rd =  new RandomAccessFile(file, "rw");
+            RandomAccessFile rd = new RandomAccessFile(file, "rw");
             String content = rd.readLine();
             int index = 0;
             while (content != null) {
@@ -80,6 +75,7 @@ public class ManagerItem2 {
         myTank.draw(g2d);
 
     }
+
     public void drawMyTank2(Graphics2D g2d) {
         myTank2.draw(g2d);
 
@@ -88,6 +84,7 @@ public class ManagerItem2 {
     public void moveMyTank(int orientation) {
         myTank.move(orientation, items);
     }
+
     public void moveMyTank2(int orientation) {
         myTank2.move(orientation, items);
     }
@@ -99,6 +96,7 @@ public class ManagerItem2 {
             currentTimeFireMyTank = time;
         }
     }
+
     public void fireBullet2() {
         long time = System.currentTimeMillis();
         if (time - currentTimeFireMyTank > 500) {
@@ -121,23 +119,21 @@ public class ManagerItem2 {
         myTank.interactBullet(items);
         myTank2.interactBullet(items);
     }
+
     public boolean killTank() {
 
-            boolean isKill = myTank.killTank(myTank2);
-            if (isKill) {
-
-                return true;
-            }
-            return  false;
+        boolean isKill = myTank.killTank(myTank2);
+        if (isKill) {
+            return true;
+        }
+        return false;
     }
 
     public boolean killTank2() {
         boolean isKill = myTank2.killTank(myTank);
         if (isKill) {
-
             return true;
         }
-
         return false;
     }
 }

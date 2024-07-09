@@ -62,7 +62,7 @@ public class MyTank extends Item {
                 continue;
             }
 
-            Rectangle rect2 = new Rectangle(item.x, item.y,item.size, item.size);
+            Rectangle rect2 = new Rectangle(item.x, item.y, item.size, item.size);
             if (rect1.intersects(rect2) == true) {
                 return true;
             }
@@ -173,6 +173,7 @@ public class MyTank extends Item {
         }
         return false;
     }
+
     public boolean killTank(MyTank2 myTank2) {
         Rectangle rect1 = new Rectangle(myTank2.x, myTank2.y, myTank2.size, myTank2.size);
         for (int i = 0; i < bullets.size(); i++) {

@@ -1,7 +1,10 @@
 package online;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -33,10 +36,12 @@ public class OnlineGame {
             out.println(message); // Gửi thông điệp tới server nếu PrintWriter đã được tạo.
         }
     }
+
     public List<String> getGameUpdates() {
         return gameUpdates;
     }
-//    public ConcurrentLinkedQueue<String> getGameUpdates() {
+
+    //    public ConcurrentLinkedQueue<String> getGameUpdates() {
 //        return serverUpdates;
 //    }
     private class IncomingReader implements Runnable {
