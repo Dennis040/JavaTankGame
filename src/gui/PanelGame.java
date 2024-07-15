@@ -89,11 +89,13 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
             moveBulletOfTank();
             //fireOfMyTank();
             managerItem.interactBulletOfMyTank();
+
             managerItem.moveAllEnemyTank();
             managerItem.moveAllBulletEnemyTank();
             managerItem.fireEnemyTank();
             managerItem.interactBulletOfAllEnemyTank();
             managerItem.killEnemyTank();
+
             if (managerItem.checkGameOver()) {
                 bitSet.clear();
                 int check = JOptionPane.showConfirmDialog(PanelGame.this, "Do you want continue", "Game Over", JOptionPane.YES_NO_OPTION);
@@ -123,7 +125,6 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
 
     private void moveBulletOfTank() {
         managerItem.moveBulletOfMyTank();
-
     }
 
     void fireOfMyTank() {

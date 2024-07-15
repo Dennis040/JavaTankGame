@@ -68,8 +68,9 @@ public class MyTank extends Item {
         g2d.fillRect(x, y + size + 2, barWidth, barHeight);  // Vẽ nền thanh máu
 
         // Vẽ thanh máu
-//        g2d.setColor(Color.RED);
+        g2d.setColor(Color.RED);
 //        g2d.fillRect(x, y + size + 2, healthBarWidth, barHeight);
+        g2d.fillRect(x, y + size + 2, barWidth, barHeight);
 
         // Vẽ viền của thanh máu
         g2d.setColor(Color.WHITE);
@@ -127,7 +128,7 @@ public class MyTank extends Item {
 
                     items.remove(i);
                     i--;
-                    continue; // Tiếp tục để không ảnh hưởng đến di chuyển của xe tăng
+                    continue;
                 } else {
                     return true; // Chỉ trả về true nếu va chạm với vật cản
                 }
