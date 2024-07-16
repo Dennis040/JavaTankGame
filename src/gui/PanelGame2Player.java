@@ -145,7 +145,5 @@ public class PanelGame2Player extends JPanel implements KeyListener, Runnable {
         managerItem2Player.moveBulletOfMyTank();
 
     }
-
-
 }
 

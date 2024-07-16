@@ -47,7 +47,6 @@ public class PanelHelp extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String run = actionEvent.getActionCommand();
-        ;
         switch (run) {
             case BACK: {
                 Clip clip = Sound.getSound(getClass().getResource("/sound/shoot.wav"));

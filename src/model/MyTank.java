@@ -75,6 +75,10 @@ public class MyTank extends Item {
         // Vẽ viền của thanh máu
         g2d.setColor(Color.WHITE);
         g2d.drawRect(x, y + size + 2, barWidth, barHeight);  // Vẽ viền thanh máu
+
+        // Vẽ số mạng sống
+        g2d.setColor(Color.WHITE);
+        g2d.drawString("Lives: " + health, x, y - 5);
     }
 
     public void move(int orientation, ArrayList<Item> items) {

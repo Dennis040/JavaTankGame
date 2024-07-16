@@ -45,8 +45,7 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
         managerItem.drawEnemyAllTank(g2d);
         managerItem.drawBulletOfMyTank(g2d);
         managerItem.drawAllBulletEnemyTank(g2d);
-        managerItem.drawAll(g2d);
-
+        managerItem.drawAllItem(g2d);
     }
 
     @Override
@@ -95,6 +94,7 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
             managerItem.fireEnemyTank();
             managerItem.interactBulletOfAllEnemyTank();
             managerItem.killEnemyTank();
+            managerItem.interactBulletOfAllEnemyTankWithMyTank();
 
             if (managerItem.checkGameOver()) {
                 bitSet.clear();

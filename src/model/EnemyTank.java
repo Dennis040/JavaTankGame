@@ -180,7 +180,22 @@ public class EnemyTank extends Item {
                         items.remove(j);
                         return;
                     }
+
                 }
+            }
+        }
+    }
+
+    public void interactBulletWithMyTank(MyTank myTank) {
+        for (int i = 0; i < bullets.size(); i++) {
+            Bullet bullet = bullets.get(i);
+            Rectangle rect1 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
+            Rectangle rect2 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
+
+            if (rect1.intersects(rect2)) {
+                myTank.decreaseHealth(1); // Giảm sức khỏe của MyTank
+                bullets.remove(i); // Xóa đạn sau khi va chạm
+                i--;
             }
         }
     }

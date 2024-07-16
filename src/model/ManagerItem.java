@@ -25,15 +25,13 @@ public class ManagerItem {
         int y = 580;
         int orientation = MyTank.UP;
         int id = Images.ID_TANKS[orientation];
-        int maxHealth = 100;  // Max health cho MyTank
         myTank = new MyTank(id, x, y, 35, orientation);
         enemyTanks = new ArrayList<EnemyTank>();
         createEnemy();
         createHeart();
-
     }
 
-    private void createHeart() {
+    public void createHeart() {
         HeartItem heart1 = new HeartItem(Images.HEART_ID, 100, 100, 20);
         items.add(heart1);
         HeartItem heart2 = new HeartItem(Images.HEART_ID, 720, 70, 20);
@@ -42,7 +40,7 @@ public class ManagerItem {
         items.add(heart3);
     }
 
-    void createEnemy() {
+    public void createEnemy() {
         int x1 = 20;
         int y1 = 20;
         int ori1 = MyTank.DOWN;
@@ -164,7 +162,7 @@ public class ManagerItem {
         }
     }
 
-    public void drawAll(Graphics2D g2d) {
+    public void drawAllItem(Graphics2D g2d) {
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             item.draw(g2d);
@@ -203,6 +201,13 @@ public class ManagerItem {
         for (int i = 0; i < enemyTanks.size(); i++) {
             EnemyTank enemyTank = enemyTanks.get(i);
             enemyTank.interactBullet(items);
+        }
+    }
+
+    public void interactBulletOfAllEnemyTankWithMyTank() {
+        for (EnemyTank enemyTank : enemyTanks) {
+            enemyTank.moveAllBullet();
+            enemyTank.interactBulletWithMyTank(myTank);
         }
     }
 

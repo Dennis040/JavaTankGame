@@ -44,7 +44,6 @@ public class PanelManager extends JPanel {
             cardLayout.show(this, name);
             clip.stop();
             panelGame = new PanelGame();
-
         } else if (name == PANEL_MENU) {
             cardLayout.show(this, PANEL_MENU);
             clip.stop();
