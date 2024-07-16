@@ -18,34 +18,21 @@ public class MyTank extends Item {
         super(id, x, y, size);
         this.orientation = orientation;
         bullets = new ArrayList<Bullet>();
-        health = 3;
-    }
-
-    public MyTank(int id, int x, int y, int size, int orientation, int maxHealth) {
-        super(id, x, y, size);
-        this.orientation = orientation;
-        bullets = new ArrayList<Bullet>();
-        this.maxHealth = maxHealth;
-        health = 3;
+        health = 3; // Khởi tạo sức khỏe đầy đủ
+        maxHealth = 3; // Cài đặt sức khỏe tối đa
     }
 
     public void increaseHealth() {
-        health += 1;
-        if (health > maxHealth)
-            health = maxHealth;
-        System.out.println("Health increased to: " + health);
-    }
-
-    public void increaseHealth(int amount) {
-        health += amount;
-        if (health > maxHealth) {
-            health = maxHealth;
+        if (health < maxHealth) {
+            health++;
         }
     }
 
-    public void decreaseHealth(int amount) {
-        health -= amount;
-        if (health < 0) {
+    public void decreaseHealth() {
+
+        if (health > 0) {
+            health--;
+        } else {
             health = 0;
         }
     }
@@ -78,7 +65,7 @@ public class MyTank extends Item {
 
         // Vẽ số mạng sống
         g2d.setColor(Color.WHITE);
-        g2d.drawString("Lives: " + health, x, y - 5);
+        g2d.drawString("Hearts: " + health, x, y - 5);
     }
 
     public void move(int orientation, ArrayList<Item> items) {
@@ -117,6 +104,31 @@ public class MyTank extends Item {
         }
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    // Tuong tac xe tank voi hearts
+    public void interactWithHearts(ArrayList<HeartItem> heartItems) {
+        if (heartItems == null) {
+            return;
+        }
+        Rectangle rect1 = new Rectangle(x, y, size, size);
+        for (int i = 0; i < heartItems.size(); i++) {
+            HeartItem heartItem = heartItems.get(i);
+            if (heartItem == null) {
+                continue;
+            }
+            Rectangle rect2 = new Rectangle(heartItem.getX(), heartItem.getY(), heartItem.size, heartItem.size);
+            if (rect1.intersects(rect2)) {
+                heartItem.interact(this); // Tăng sức khỏe của xe tăng
+                heartItems.remove(i); // Xóa HeartItem khỏi danh sách
+                i--; // Cập nhật chỉ số để không bỏ qua các mục tiếp theo
+            }
+        }
+    }
+
+
     boolean interactWithItems(ArrayList<Item> items) {
         Rectangle rect1 = new Rectangle(x, y, size, size);
         for (int i = 0; i < items.size(); i++) {
@@ -129,7 +141,6 @@ public class MyTank extends Item {
             if (rect1.intersects(rect2)) {
                 if (item instanceof HeartItem) {
                     ((HeartItem) item).interact(this);
-
                     items.remove(i);
                     i--;
                     continue;
@@ -137,10 +148,29 @@ public class MyTank extends Item {
                     return true; // Chỉ trả về true nếu va chạm với vật cản
                 }
             }
-
         }
         return false;
     }
+
+    public boolean interactWithEnemyTanks(ArrayList<EnemyTank> enemyTanks) {
+        if (enemyTanks == null) {
+            return false;
+        }
+        Rectangle rect1 = new Rectangle(x, y, size, size);
+        for (EnemyTank enemyTank : enemyTanks) {
+            if (enemyTank == null) {
+                continue;
+            }
+            Rectangle rect2 = new Rectangle(enemyTank.getX(), enemyTank.getY(), enemyTank.size, enemyTank.size);
+            if (rect1.intersects(rect2)) {
+                // Xử lý việc xe tăng bị trúng đạn từ xe tăng địch
+                this.decreaseHealth(); // Giảm sức khỏe của xe tăng của người chơi
+                return true; // Ngừng kiểm tra các xe tăng địch khác
+            }
+        }
+        return false;
+    }
+
 
     public void fireBullet() {
         int sizeB = 20;

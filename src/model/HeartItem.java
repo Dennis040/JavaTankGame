@@ -17,6 +17,6 @@ public class HeartItem extends Item {
     }
 
     public void interact(MyTank myTank) {
-        myTank.increaseHealth(20);  // Tăng sức khỏe của MyTank khi nhặt trái tim
+        myTank.increaseHealth();  // Tăng sức khỏe của MyTank khi nhặt trái tim
     }
 }

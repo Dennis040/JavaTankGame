@@ -12,11 +12,13 @@ import java.util.ArrayList;
 
 public class ManagerItem {
     long currentTimeFireMyTank = 0;
-    ArrayList<EnemyTank> enemyTanks;
     long currentMoveEnemy;
     long currentfireEnemyTank;
     Item home;
+
+    private ArrayList<HeartItem> heartItems;
     private ArrayList<Item> items;
+    private ArrayList<EnemyTank> enemyTanks;
     private MyTank myTank;
 
     public ManagerItem() {
@@ -26,9 +28,19 @@ public class ManagerItem {
         int orientation = MyTank.UP;
         int id = Images.ID_TANKS[orientation];
         myTank = new MyTank(id, x, y, 35, orientation);
-        enemyTanks = new ArrayList<EnemyTank>();
+        enemyTanks = new ArrayList<>();
+        heartItems = new ArrayList<>();
+
         createEnemy();
         createHeart();
+    }
+
+    public ArrayList<HeartItem> getHeartItems() {
+        return heartItems;
+    }
+
+    public ArrayList<EnemyTank> getEnemyTanks() {
+        return enemyTanks;
     }
 
     public void createHeart() {
@@ -120,6 +132,12 @@ public class ManagerItem {
 
     }
 
+    public void drawAllHeartItems(Graphics2D g2d) {
+        for (HeartItem heartItem : heartItems) {
+            heartItem.draw(g2d);
+        }
+    }
+
     public void drawEnemyAllTank(Graphics2D g2d) {
         for (int i = 0; i < enemyTanks.size(); i++) {
             EnemyTank enemyTank = enemyTanks.get(i);
@@ -173,9 +191,15 @@ public class ManagerItem {
         myTank.draw(g2d);
     }
 
-    public void moveMyTank(int orientation) {
-        myTank.move(orientation, items);
+    public void moveMyTank(int direction) {
+        myTank.move(direction, items);
+        myTank.interactWithHearts(heartItems); // Tương tác với các HeartItem
+        // Kiểm tra và giảm sức khỏe của xe tăng nếu trúng đạn từ EnemyTank
+        if (myTank.interactWithEnemyTanks(enemyTanks)) {
+            myTank.decreaseHealth(); // Gọi phương thức để giảm sức khỏe của xe tăng
+        }
     }
+
 
     public void fireBullet() {
         long time = System.currentTimeMillis();
@@ -269,7 +293,7 @@ public class ManagerItem {
         for (int i = 0; i < enemyTanks.size(); i++) {
             EnemyTank enemyTank = enemyTanks.get(i);
             boolean isKill = enemyTank.killMyTank(myTank);
-            if (isKill) {
+            if (isKill || myTank.getHealth() == 0) {
                 return true;
             }
         }

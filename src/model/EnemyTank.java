@@ -1,8 +1,5 @@
 package model;
 
-import sound.Sound;
-
-import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -193,7 +190,7 @@ public class EnemyTank extends Item {
             Rectangle rect2 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
 
             if (rect1.intersects(rect2)) {
-                myTank.decreaseHealth(1); // Giảm sức khỏe của MyTank
+                myTank.decreaseHealth(); // Giảm sức khỏe của MyTank
                 bullets.remove(i); // Xóa đạn sau khi va chạm
                 i--;
             }
@@ -201,17 +198,25 @@ public class EnemyTank extends Item {
     }
 
     public boolean killMyTank(MyTank myTank) {
-        Rectangle rect1 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
-        for (int i = 0; i < bullets.size(); i++) {
-            Bullet bullet = bullets.get(i);
-            Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
-            if (rect1.intersects(rect2)) {
-                Clip clip = Sound.getSound(getClass().getResource("/sound/explosion_tank.wav"));
-                clip.start();
-                return true;
-            }
+//        Rectangle rect1 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
+//        for (int i = 0; i < bullets.size(); i++) {
+//            Bullet bullet = bullets.get(i);
+//            Rectangle rect2 = new Rectangle(bullet.x, bullet.y, bullet.size, bullet.size);
+//            if (rect1.intersects(rect2)) {
+//                Clip clip = Sound.getSound(getClass().getResource("/sound/explosion_tank.wav"));
+//                clip.start();
+//                return true;
+//            }
+//        }
+//        return false;
+
+        Rectangle rect1 = new Rectangle(this.getX(), this.getY(), this.size, this.size);
+        Rectangle rect2 = new Rectangle(myTank.getX(), myTank.getY(), myTank.size, myTank.size);
+        if (rect1.intersects(rect2)) {
+            myTank.decreaseHealth(); // Giảm sức khỏe của xe tăng của người chơi
+            return true; // Xe tăng của người chơi bị tấn công
         }
-        return false;
+        return false; // Xe tăng của người chơi không bị tấn công
 
     }
 

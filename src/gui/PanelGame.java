@@ -65,7 +65,6 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
 
     @Override
     public void run() {
-
         while (isRunning) {
             try {
                 Thread.sleep(10);
@@ -84,9 +83,9 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
             if (bitSet.get(KeyEvent.VK_SPACE)) {
                 managerItem.fireBullet();
             }
-            //moveMyTank();
+
             moveBulletOfTank();
-            //fireOfMyTank();
+            managerItem.interactBulletOfAllEnemyTankWithMyTank();
             managerItem.interactBulletOfMyTank();
 
             managerItem.moveAllEnemyTank();
@@ -94,7 +93,6 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
             managerItem.fireEnemyTank();
             managerItem.interactBulletOfAllEnemyTank();
             managerItem.killEnemyTank();
-            managerItem.interactBulletOfAllEnemyTankWithMyTank();
 
             if (managerItem.checkGameOver()) {
                 bitSet.clear();
@@ -120,8 +118,8 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
             }
             repaint();
         }
-
     }
+
 
     private void moveBulletOfTank() {
         managerItem.moveBulletOfMyTank();
@@ -137,27 +135,13 @@ public class PanelGame extends JPanel implements KeyListener, Runnable {
     void moveMyTank() {
         if (isDown) {
             managerItem.moveMyTank(MyTank.DOWN);
-
-        } else {
-            if (isUp) {
-                managerItem.moveMyTank(MyTank.UP);
-
-            } else {
-                if (isRight) {
-                    managerItem.moveMyTank(MyTank.RIGHT);
-
-                } else {
-                    if (isLeft) {
-                        managerItem.moveMyTank(MyTank.LEFT);
-
-                    }
-
-                }
-            }
+        } else if (isUp) {
+            managerItem.moveMyTank(MyTank.UP);
+        } else if (isRight) {
+            managerItem.moveMyTank(MyTank.RIGHT);
+        } else if (isLeft) {
+            managerItem.moveMyTank(MyTank.LEFT);
         }
-
     }
-
-
 }
 
