@@ -1,5 +1,8 @@
 package model;
 
+import sound.Sound;
+
+import javax.sound.sampled.Clip;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -210,10 +213,13 @@ public class EnemyTank extends Item {
 //        }
 //        return false;
 
+        // Neu enemyTank cham myTank thi thua
         Rectangle rect1 = new Rectangle(this.getX(), this.getY(), this.size, this.size);
         Rectangle rect2 = new Rectangle(myTank.getX(), myTank.getY(), myTank.size, myTank.size);
         if (rect1.intersects(rect2)) {
+            Clip clip = Sound.getSound(getClass().getResource("/sound/explosion_tank.wav"));
             myTank.decreaseHealth(); // Giảm sức khỏe của xe tăng của người chơi
+            clip.start();
             return true; // Xe tăng của người chơi bị tấn công
         }
         return false; // Xe tăng của người chơi không bị tấn công
