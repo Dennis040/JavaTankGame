@@ -1,9 +1,10 @@
+
 package model;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MyTank2 extends Item {
+public class MyTank3 extends Item {
     public static final int LEFT = 0;
     public static final int RIGHT = 1;
     public static final int UP = 2;
@@ -12,7 +13,7 @@ public class MyTank2 extends Item {
     int orientation;
     ArrayList<Bullet> bullets;
 
-    public MyTank2(int id, int x, int y, int size, int orientation) {
+    public MyTank3(int id, int x, int y, int size, int orientation) {
         super(id, x, y, size);
         this.orientation = orientation;
         bullets = new ArrayList<Bullet>();
@@ -149,7 +150,7 @@ public class MyTank2 extends Item {
 
     }
 
-    public boolean killTank(MyTank3 myTank) {
+    public boolean killTank(MyTank2 myTank) {
         Rectangle rect1 = new Rectangle(myTank.x, myTank.y, myTank.size, myTank.size);
         for (int i = 0; i < bullets.size(); i++) {
             Bullet bullet = bullets.get(i);

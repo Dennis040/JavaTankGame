@@ -11,8 +11,9 @@ public class ManagerItem2player {
     long currentTimeFireMyTank = 0;
     Item home;
     private ArrayList<Item> items;
-    private MyTank myTank;
+    //private MyTank myTank;
     private MyTank2 myTank2;
+    private MyTank3 myTank3;
 
     public ManagerItem2player() {
 
@@ -23,7 +24,7 @@ public class ManagerItem2player {
         int y1 = 20;
         int orientation = MyTank.UP;
         int id = Images.ID_TANKS[orientation];
-        myTank = new MyTank(id, x, y, 35, orientation);
+        myTank3 = new MyTank3(id, x, y, 35, orientation);
         myTank2 = new MyTank2(id, x1, y1, 35, orientation);
     }
 
@@ -72,7 +73,7 @@ public class ManagerItem2player {
     }
 
     public void drawMyTank(Graphics2D g2d) {
-        myTank.draw(g2d);
+        myTank3.draw(g2d);
 
     }
 
@@ -82,7 +83,7 @@ public class ManagerItem2player {
     }
 
     public void moveMyTank(int orientation) {
-        myTank.move(orientation, items);
+        myTank3.move(orientation, items);
     }
 
     public void moveMyTank2(int orientation) {
@@ -92,7 +93,7 @@ public class ManagerItem2player {
     public void fireBullet() {
         long time = System.currentTimeMillis();
         if (time - currentTimeFireMyTank > 500) {
-            myTank.fireBullet();
+            myTank3.fireBullet();
             currentTimeFireMyTank = time;
         }
     }
@@ -106,23 +107,23 @@ public class ManagerItem2player {
     }
 
     public void drawBulletOfMyTank(Graphics2D g2d) {
-        myTank.drawAllBullet(g2d);
+        myTank3.drawAllBullet(g2d);
         myTank2.drawAllBullet(g2d);
     }
 
     public void moveBulletOfMyTank() {
-        myTank.moveAllBullet();
+        myTank3.moveAllBullet();
         myTank2.moveAllBullet();
     }
 
     public void interactBulletOfMyTank() {
-        myTank.interactBullet(items);
+        myTank3.interactBullet(items);
         myTank2.interactBullet(items);
     }
 
     public boolean killTank() {
 
-        boolean isKill = myTank.killTank(myTank2);
+        boolean isKill = myTank3.killTank(myTank2);
         if (isKill) {
             return true;
         }
@@ -130,7 +131,7 @@ public class ManagerItem2player {
     }
 
     public boolean killTank2() {
-        boolean isKill = myTank2.killTank(myTank);
+        boolean isKill = myTank2.killTank(myTank3);
         if (isKill) {
             return true;
         }
